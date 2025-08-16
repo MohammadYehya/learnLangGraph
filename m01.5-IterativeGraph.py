@@ -113,6 +113,8 @@ graph.add_edge('generate', 'evaluate')
 
 graph.add_conditional_edges('evaluate', route_evaluation, {'approved': END, 'needs_improvement': 'optimize'})
 graph.add_edge('optimize', 'evaluate')
+# To implement an interative structure, we simply add an edge to a previous node.
+# Iterative patterns are often paired with conditions whether it be with add_conditional_edge or the Command function
 
 workflow = graph.compile()
 initial_state = {
