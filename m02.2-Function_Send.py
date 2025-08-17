@@ -32,5 +32,6 @@ graph.add_node(reduceMap)
 graph.add_conditional_edges(START, generateMap)
 graph.add_edge("reduceMap", END)
 
+# Another thing to note is that each concurrent branch doesnt wait for the rest of the branch, but they expect to be reduced some way.
 graph = graph.compile()
 print(graph.invoke({}))
