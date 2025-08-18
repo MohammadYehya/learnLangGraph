@@ -20,6 +20,8 @@ graph.add_node("step2", step2)
 # To define a parallel route, just make multiple edges from a node
 graph.add_edge(START, "step1")
 graph.add_edge(START, "step2")
+
+# Parallel nodes share a singular state, therefore any reducers would apply their reduction on the shared state
 graph.add_edge("step1", END)
 graph.add_edge("step2", END)
 
