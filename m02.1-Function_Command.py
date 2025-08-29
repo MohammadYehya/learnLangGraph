@@ -3,11 +3,10 @@ from langgraph.types import Command
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import PydanticOutputParser
-from langchain_core.output_parsers import StrOutputParser
 from typing import TypedDict, Literal
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(override=True)
 
 class State(TypedDict):
     review: str
@@ -21,6 +20,7 @@ class Sentiment(BaseModel):
 class Email(BaseModel):
     email: str = Field(description="The Emaol to send to Customer Support.")
 
+# Returning the Command with Literals is necessary for graph visualization
 def generateSentiment(state: State) -> Command[Literal["generateFeedbackEmail", "generateResponse"]]:
     parser = PydanticOutputParser(pydantic_object=Sentiment)
     prompt = PromptTemplate(template="Find the sentiment in POSITIVE or NEGATIVE of the following review:\n\n{review}\n\n{format_instruction}", input_variables=['review'], partial_variables={'format_instruction':parser.get_format_instructions()})
