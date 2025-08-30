@@ -60,9 +60,7 @@ def save_recall_memory(memory: str, config: RunnableConfig) -> str:
 def search_recall_memories(query: str, config: RunnableConfig) -> list[str]:
     """Search for relevant memories."""
     user_id = get_user_id(config)
-    # def _filter_function(doc: Document) -> bool:
-    #     return doc.metadata.get("user_id") == user_id
-    documents = store.similarity_search(query, k=30, filter={"user_id": user_id})
+    documents = store.similarity_search(query, k=5, filter={"user_id": user_id})
     return [document.page_content for document in documents]
 
 tools = [save_recall_memory, search_recall_memories]
