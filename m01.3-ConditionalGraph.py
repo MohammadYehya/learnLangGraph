@@ -2,7 +2,6 @@ from langgraph.graph import StateGraph, START, END
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import PydanticOutputParser
-from langchain_core.output_parsers import StrOutputParser
 from typing import TypedDict, Literal
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
