@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph, START, END
-from langgraph.types import Send, Command
+from langgraph.types import Send
 from langchain_openai import ChatOpenAI
 from typing import TypedDict, Annotated
 from pydantic import BaseModel, Field
